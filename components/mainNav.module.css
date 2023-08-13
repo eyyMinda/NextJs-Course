@@ -1,0 +1,19 @@
+.nav{
+  background-color: blueviolet;
+  color: white;
+}
+.nav ul{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+.nav li {
+  list-style: none;
+}
+.nav li a{
+  color: white;
+}
+.nav li a:hover{
+  text-decoration-color: magenta;
+}

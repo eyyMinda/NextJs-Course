@@ -1,21 +1,27 @@
-import Link from 'next/link'
-
-export default function HomePage() {
+export default function HomePage(props) {
+  const { products } = props;
   return (
     <div>
       <h1>Home Page</h1>
 
       <ul>
-        <li>
-          <Link href="/portfolio" >Portfolio</Link>
-        </li>
-        <li>
-          <Link href="/clients" >Clients</Link>
-        </li>
-        <li>
-          <Link href="/blogs" >Blogs</Link>
-        </li>
+        {products.map(product => <li key={product.id}>{product.title}</li>)}
       </ul>
     </div>
   )
-} 
+}
+
+import fs from 'fs/promises';
+import path from 'path';
+
+export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), 'data', 'dummy-backend.json');
+  const jsonData = await fs.readFile(filePath);
+  const data = JSON.parse(jsonData);
+
+  return {
+    props: {
+      products: data.products
+    }
+  };
+}
