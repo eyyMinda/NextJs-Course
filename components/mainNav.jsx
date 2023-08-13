@@ -6,6 +6,9 @@ export default function MainNav(props) {
     <nav className={css.nav}>
       <ul>
         <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
           <Link href="/portfolio">Portfolio</Link>
         </li>
         <li>
