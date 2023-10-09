@@ -18,6 +18,12 @@ export default function MainNav(props) {
           <Link href="/blogs">Blogs</Link>
         </li>
       </ul>
+
+      <ul>
+        <li>
+          <Link href="/user-profile">Profile</Link>
+        </li>
+      </ul>
     </nav>
   );
 }

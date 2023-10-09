@@ -1,8 +1,9 @@
-.nav{
+.nav {
   background-color: blueviolet;
   color: white;
+  display: flex;
 }
-.nav ul{
+.nav ul {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -11,9 +12,9 @@
 .nav li {
   list-style: none;
 }
-.nav li a{
+.nav li a {
   color: white;
 }
-.nav li a:hover{
+.nav li a:hover {
   text-decoration-color: magenta;
 }
