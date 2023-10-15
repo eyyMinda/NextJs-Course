@@ -17,6 +17,9 @@ export default function MainNav(props) {
         <li>
           <Link href="/blogs">Blogs</Link>
         </li>
+        <li>
+          <Link href="/last-sales">Sales</Link>
+        </li>
       </ul>
 
       <ul>
