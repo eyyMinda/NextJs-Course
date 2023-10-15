@@ -1,34 +1,37 @@
+import { transformObjToArr } from "@/functions/Helpers";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
-const api =
-  "https://wwafeww-e792f-default-rtdb.europe-west1.firebasedatabase.app/";
+
+const api = process.env.NEXT_DB_URL + "sales.json";
 const fetcher = (...args) =>
   fetch(...args)
     .then(res => res.json())
-    .then(data => {
-      const dataArr = [];
-      for (const key in data) {
-        dataArr.push({
-          id: key,
-          username: data[key].username,
-          volume: data[key].volume,
-        });
-      }
-      return dataArr;
-    });
+    .then(data => transformObjToArr(data));
 
-export default function LastSalesPage() {
-  const { data, err, isLoading } = useSWR(api + "sales.json", fetcher);
+export default function LastSalesPage(props) {
+  const [sales, setSales] = useState(props.sales);
 
-  if (err) return <h1>{err}</h1>;
-  if (isLoading) return <h1>Loading...</h1>;
+  const { data, err, isLoading } = useSWR(api, fetcher);
+  useEffect(() => data && setSales(data), [data]);
+
+  if (!sales && err) return <h1>{err}</h1>;
+  if (!sales && isLoading) return <h1>Loading...</h1>;
 
   return (
     <ul>
-      {data.map(sale => (
+      {sales.map(sale => (
         <li key={sale.id}>
           {sale.username} bought <b>${sale.volume}</b> worth of volumes
         </li>
       ))}
     </ul>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch(api);
+  const data = await response.json;
+  const dataArr = transformObjToArr(data);
+
+  return { props: { sales: dataArr } };
 }
