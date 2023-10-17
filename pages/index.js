@@ -57,10 +57,10 @@ export default function HomePage(props) {
           <th>Feedback</th>
         </tr></thead>
         <tbody>
-          {feedbacks?.map(feedback => (
-            <tr key={feedback.id}>
-              <td>{feedback.email.split('@')[0]}</td>
-              <td>{feedback.text}</td>
+          {feedbacks?.map(item => (
+            <tr key={item.id}>
+              <td>{item.email.split('@')[0]}</td>
+              <td>{item.text}</td>
             </tr>
           ))}
         </tbody>
