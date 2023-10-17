@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    NEXT_DB_URL: 'https://wwafeww-e792f-default-rtdb.europe-west1.firebasedatabase.app/'
+    NEXT_DB_URL: '_DB_URL'
   },
 }
 
