@@ -1,4 +1,4 @@
-import { transformObjToArr } from "@/functions/Helpers";
+import { transformObjToArr } from "@/helpers/utility";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
