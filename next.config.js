@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    NEXT_DB_URL: '_DB_URL'
-  },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  }
 }
 
 module.exports = nextConfig;

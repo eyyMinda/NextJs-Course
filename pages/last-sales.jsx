@@ -1,8 +1,8 @@
+import { api } from "@/helpers/api-util";
 import { transformObjToArr } from "@/helpers/utility";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-const api = process.env.NEXT_DB_URL + "sales.json";
 const fetcher = (...args) =>
   fetch(...args)
     .then(res => res.json())
@@ -11,7 +11,7 @@ const fetcher = (...args) =>
 export default function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
 
-  const { data, err, isLoading } = useSWR(api, fetcher);
+  const { data, err, isLoading } = useSWR(api + "sales.json", fetcher);
   useEffect(() => data && setSales(data), [data]);
 
   if (!sales && err) return <h1>{err}</h1>;
