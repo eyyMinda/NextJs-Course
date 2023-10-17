@@ -20,6 +20,9 @@ export default function MainNav(props) {
         <li>
           <Link href="/last-sales">Sales</Link>
         </li>
+        <li>
+          <Link href="/feedback">Feedback</Link>
+        </li>
       </ul>
 
       <ul>
