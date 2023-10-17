@@ -1,11 +1,12 @@
+import { useState } from "react";
+
 export default function FeedbackPage(props) {
   const [feedbackData, setFeedbackData] = useState([]);
-
   if (!props.feedbacks) return <h1>No feedbacks</h1>
+
   function handleGoToFeedback(id) {
     fetch(`/api/${id}`).then(res => res.json()).then(data => setFeedbackData(d => [...d, data.feedback]));
   }
-
 
   return (
     <table>
@@ -32,7 +33,6 @@ export default function FeedbackPage(props) {
 }
 
 import { getFileData, getFilePath } from "@/helpers/api-util";
-import { useState } from "react";
 export async function getStaticProps() {
   const feedbacks = getFileData(getFilePath());
 
